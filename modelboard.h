@@ -12,6 +12,7 @@ class ModelBoard : public QAbstractTableModel
 {
     Q_OBJECT
 public:
+
     ModelBoard();
 
     enum Roles{
@@ -24,18 +25,22 @@ public:
     bool setData(const QModelIndex &index, const QVariant &value, int role) override;
     QVariant data(const QModelIndex& index, int role) const override;
 
+    Q_INVOKABLE void clean();
+
     Q_INVOKABLE void setChar(int ch,int index);
 
     Q_INVOKABLE void check();
+
 signals:
+
     void sendToQML(const QString &msg);
 
 private:
+
     vector<vector<QChar>> m_board;
     static const int row=3;
     static const int column=3;
 
-    void clean();
 
 };
 
